@@ -7,17 +7,20 @@ def test_is_number_positive_1():
     actual = is_number_positive(number)
     assert expected is actual
 
+
 def test_is_number_positive_2():
     number = -5
     expected = False
     actual = is_number_positive(number)
     assert expected is actual
 
+
 def test_is_number_positive_3():
     number = -5
     expected = False
     actual = is_number_positive(number)
     assert expected is actual
+
 
 def test_concatenate_two_strings_1():
     string_1 = '123'
