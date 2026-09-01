@@ -8,7 +8,8 @@ git init
 git remote add origin ###git@github.com:smartguy-coder/group25082026.git###
 git pull origin main
 
-uv init app
-cd app
-uv sync
-uv add pytest
+- uv init app
+- cd app
+- uv sync
+- uv add pytest
+- Ctrl-Alt-l
