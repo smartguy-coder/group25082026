@@ -13,3 +13,4 @@ git pull origin main
 - uv sync
 - uv add pytest
 - Ctrl-Alt-l
+- uv run -m pytest .
