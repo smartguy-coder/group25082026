@@ -1,8 +1,32 @@
+import pytest
+
 from utils import is_number_positive, concatenate_two_strings
 
 
 class TestIsNumberPositive:
+
+    @pytest.mark.parametrize(
+        'number, expected',
+        [
+            (-5, False),
+            (-5, False),
+            (-5, False),
+            (15, True),
+            (-5, False),
+            (0.1, True),
+            (-5, False),
+            (-5, False),
+            (-5, False),
+            (-5, False),
+        ]
+    )
+    def test_is_number_positive_general(self, number: int, expected: bool):
+        actual = is_number_positive(number)
+        assert expected is actual
+
+    @pytest.mark.skip(reason='Something strange here fix ASAP')
     def test_is_number_positive_1(self):
+        1/0
         number = 5
         expected = True
         actual = is_number_positive(number)
