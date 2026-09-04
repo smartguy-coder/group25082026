@@ -15,6 +15,13 @@ def test_is_number_positive_2():
     assert expected is actual
 
 
+def test_is_number_positive_2_1():
+    number = 0.01
+    expected = True
+    actual = is_number_positive(number)
+    assert expected is actual
+
+
 def test_is_number_positive_3():
     number = -5
     expected = False
