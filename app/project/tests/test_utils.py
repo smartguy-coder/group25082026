@@ -1,30 +1,23 @@
 from utils import is_number_positive, concatenate_two_strings
 
 
-def test_is_number_positive_1():
-    number = 5
-    expected = True
-    actual = is_number_positive(number)
-    assert expected is actual
+class TestIsNumberPositive:
+    def test_is_number_positive_1(self):
+        number = 5
+        expected = True
+        actual = is_number_positive(number)
+        assert expected is actual
 
-
-def test_is_number_positive_2():
-    number = -5
-    expected = False
-    actual = is_number_positive(number)
-    assert expected is actual
+    def test_is_number_positive_2(self):
+        number = -5
+        expected = False
+        actual = is_number_positive(number)
+        assert expected is actual
 
 
 def test_is_number_positive_2_1():
     number = 0.01
     expected = True
-    actual = is_number_positive(number)
-    assert expected is actual
-
-
-def test_is_number_positive_3():
-    number = -5
-    expected = False
     actual = is_number_positive(number)
     assert expected is actual
 
@@ -35,3 +28,10 @@ def test_concatenate_two_strings_1():
     expected = "123123"
     actual = concatenate_two_strings(string_1, string_2)
     assert actual == expected, "what happened?"
+
+
+def test_is_number_positive_3():
+    number = -5
+    expected = False
+    actual = is_number_positive(number)
+    assert expected is actual
