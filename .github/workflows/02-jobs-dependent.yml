@@ -1,0 +1,42 @@
+# ============================================================
+# Пайплайн №2 — взаємопов'язані джоби.
+# Мета: показати, як одна джоба чекає на іншу (needs)
+#       і як передати дані між джобами (outputs).
+#
+# Порядок виконання: build ➜ test ➜ deploy (строго послідовно).
+# ============================================================
+
+name: 02 · Взаємопов'язані джоби (needs)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Оголошуємо output джоби, щоб наступні джоби могли його прочитати
+    outputs:
+      artifact: ${{ steps.make.outputs.name }}
+    steps:
+      - id: make
+        name: Крок 1 — "збірка" артефакту
+        run: |
+          echo "Збираємо застосунок..."
+          # Записуємо значення в output кроку (пізніше стане output джоби)
+          echo "name=app-v1.0.0" >> "$GITHUB_OUTPUT"
+
+  test:
+    needs: build              # 🔗 стартує ЛИШЕ після успішного build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Крок 2 — тестуємо те, що зібрав build
+        # Читаємо output з попередньої джоби через needs.<job>.outputs.<name>
+        run: echo "Тестуємо '${{ needs.build.outputs.artifact }}' — запустилось після build ✅"
+
+  deploy:
+    needs: [build, test]      # 🔗 чекає на ОБИДВІ джоби (build і test)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Крок 3 — деплой
+        run: echo "Деплоїмо '${{ needs.build.outputs.artifact }}' 🚀 (після build і test)"

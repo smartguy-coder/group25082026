@@ -7,6 +7,7 @@ class TestBankAccountATMMashine:
         bank_account.deposit_money(100)
         bank_account.deposit_money(200)
         assert bank_account.money == 300
+        1/0
 
     def test_withdraw(self):
         bank_account = BankAccount(owner='Vasyl')
