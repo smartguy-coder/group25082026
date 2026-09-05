@@ -1,0 +1,35 @@
+# ============================================================
+# Пайплайн №4 — головний: запуск тестів (pytest через uv).
+# Повторює те, що ти робиш локально:
+#     cd app/project
+#     uv run -m pytest .
+# ============================================================
+
+name: 04 · Тести (pytest через uv)
+
+on:
+  push:
+  pull_request:       # додатково — на кожен Pull Request
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Завантажуємо код репозиторію на runner
+      - name: Клонуємо репозиторій
+        uses: actions/checkout@v5
+
+      # 2. Ставимо uv. Він сам підтягне потрібний Python (3.14 з .python-version)
+      #    і синхронізує залежності з uv.lock.
+      - name: Встановлюємо uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true      # кеш залежностей, щоб наступні запуски були швидші
+
+      # 3. Запускаємо тести з тієї ж теки, що й локально — app/project.
+      #    working-directory робить "cd app/project" перед командою.
+      #    -v = докладний вивід (кожен тест окремим рядком).
+      - name: Запускаємо тести
+        working-directory: app/project
+        run: uv run -m pytest . -v
