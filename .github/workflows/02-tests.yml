@@ -1,0 +1,21 @@
+name: 02 - tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  testing_with_pytest:
+    runs-on: ubuntu-latest
+    steps:
+      #  download our repo
+      - name: clone repo
+        uses: actions/checkout@v7
+
+      - name: install uv
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: run test
+        working-directory: app/project
+        run: uv run -m pytest .
