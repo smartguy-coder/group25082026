@@ -21,3 +21,6 @@ git pull origin main
 
 uv add "passlib[bcrypt]==1.7.4"
 uv add "bcrypt==4.0.1"
+
+uv add redis
+uv add python-dotenv
