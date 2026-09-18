@@ -24,3 +24,5 @@ uv add "bcrypt==4.0.1"
 
 uv add redis
 uv add python-dotenv
+group25082026\app\project> uv run .\main.py
+redis.io
