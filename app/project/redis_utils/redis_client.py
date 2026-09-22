@@ -10,9 +10,9 @@ redis_client = redis.Redis(
     password=config.REDIS_PASSWORD,
 )
 
-# Write - CREATE
+# Write - CREATE - UPDATE
 # strings
-# success = redis_client.set('foo', 'bar333333333333333')
+# success = redis_client.set('foo5454545', 'bar3333333388888888883333333')
 # print(success)
 # redis_client.set('myKeyTTL', 'secret data', ex=15)
 # redis_client.set('promo:2', 'promocode', exat=datetime.datetime(year=2027, month=3, day=8))
@@ -32,3 +32,20 @@ redis_client = redis.Redis(
 # counter
 # redis_client.incr('views', -11)
 # redis_client.incrby('views', 5555555)
+
+
+# READ
+# strings
+# foo_54_data = redis_client.get('foo5454545999')
+# print(foo_54_data)
+
+# lists
+# data_from_list = redis_client.lrange('list-key', start=-2, end=-1)
+# print(data_from_list)
+
+# dicts
+# data_from_dict = redis_client.hgetall("user:123")
+# print(data_from_dict)
+
+# DELETE
+# redis_client.delete('user:123', "foo")
