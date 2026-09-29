@@ -14,5 +14,5 @@ jobs:
       - name: More actions
         run: |
           echo "Привіт з кроку 2 🤲"
-          sleep 30
+          sleep 5
           echo "Привіт з кроку - щось написане після сліпа"
