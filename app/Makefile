@@ -18,6 +18,6 @@ step2: hello
 .PHONY: build
 build:
     # make build v=0.6.0
-'	'docker build  -t $(REPO):$(v) -t $(REPO):latest .
+	docker build  -t $(REPO):$(v) -t $(REPO):latest .
 	docker push  $(REPO):$(v)
 	docker push  $(REPO):latest
