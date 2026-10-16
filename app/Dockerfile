@@ -15,4 +15,4 @@ RUN uv pip install --system --no-cache .
 
 COPY /project /project
 
-CMD ["uv", "run", "-m", "main", "11"]
+CMD ["uv", "run", "-m", "main", "110"]
